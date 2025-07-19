@@ -13,64 +13,71 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
+    <!-- Bootstrap Icons for Dark Mode Toggle -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- favicon -->
+    <link rel="icon" href="./Assets/favicon/favicon.png" type="image/png">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./Assets/css/styles.css">
 </head>
 <body>
 
-    <div class="game-container">
-        <h1 class="game-title mb-3">Memory Match</h1>
+ <div class="game-container">
+        <div class="header-container">
+            <h1 class="game-title">Memory Deluxe</h1>
+            <button class="btn btn-outline-secondary" id="theme-toggle-btn">
+                <i class="bi bi-sun-fill"></i>
+            </button>
+        </div>
         
-        <!-- Game Settings -->
         <div class="settings-container">
-            <div id="difficulty-selector" class="btn-group" role="group" aria-label="Difficulty">
-              <input type="radio" class="btn-check" name="difficulty" id="easy" autocomplete="off" value="easy" checked>
+            <div class="btn-group" role="group">
+              <input type="radio" class="btn-check" name="difficulty" id="easy" value="easy" checked>
               <label class="btn btn-outline-primary" for="easy">Easy</label>
-
-              <input type="radio" class="btn-check" name="difficulty" id="medium" autocomplete="off" value="medium">
+              <input type="radio" class="btn-check" name="difficulty" id="medium" value="medium">
               <label class="btn btn-outline-primary" for="medium">Medium</label>
-
-              <input type="radio" class="btn-check" name="difficulty" id="hard" autocomplete="off" value="hard">
+              <input type="radio" class="btn-check" name="difficulty" id="hard" value="hard">
               <label class="btn btn-outline-primary" for="hard">Hard</label>
             </div>
             
-            <div id="theme-selector" class="btn-group" role="group" aria-label="Theme">
-              <input type="radio" class="btn-check" name="theme" id="animals" autocomplete="off" value="animals" checked>
-              <label class="btn btn-outline-primary" for="animals">Animals</label>
-
-              <input type="radio" class="btn-check" name="theme" id="food" autocomplete="off" value="food">
-              <label class="btn btn-outline-primary" for="food">Food</label>
-            </div>
+            <select class="form-select w-auto" id="theme-selector">
+                <option value="animals" selected>Animals</option>
+                <option value="food">Food</option>
+                <option value="sports">Sports</option>
+                <option value="travel">Travel</option>
+                <option value="flags">Flags</option>
+            </select>
         </div>
 
-        <!-- Game Statistics -->
         <div class="stats-container">
             <div>Moves: <span id="moves-count">0</span></div>
             <div>Time: <span id="timer">0s</span></div>
-            <div>Best Time: <span id="best-time">N/A</span></div>
+            <div>Best: <span id="best-time">N/A</span></div>
+            <div>Hints: <span id="hints-left">3</span></div>
         </div>
 
-        <!-- The Game Board -->
-        <div id="game-board" class="game-board"></div>
+        <div id="game-board" class="game-board" role="grid" aria-label="Memory Game Board"></div>
 
-        <!-- Restart Button -->
-        <div class="restart-button-container">
-            <button id="restart-btn" class="btn btn-primary btn-lg">Start New Game</button>
+        <div class="actions-container">
+            <button id="restart-btn" class="btn btn-primary btn-lg">New Game</button>
+            <button id="hint-btn" class="btn btn-warning btn-lg">Hint</button>
         </div>
     </div>
 
     <!-- Win Modal -->
-    <div class="modal fade" id="winModal" tabindex="-1" aria-labelledby="winModalLabel" aria-hidden="true">
+    <div class="modal fade" id="winModal" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content text-center p-4">
           <div class="modal-header border-0">
-            <h5 class="modal-title w-100" id="winModalLabel" style="font-family: 'Pacifico', cursive; font-size: 2.5rem; color: var(--primary-color);">You Won!</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h5 class="modal-title w-100" style="font-family: 'Pacifico', cursive; font-size: 2.5rem; color: var(--primary-color);">You Won!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <div class="modal-body">
             <p class="fs-5">Congratulations! You are a memory master.</p>
-            <p><strong>Total Moves:</strong> <span id="final-moves"></span></p>
-            <p><strong>Your Time:</strong> <span id="final-time"></span></p>
+            <p><strong>Moves:</strong> <span id="final-moves"></span></p>
+            <p><strong>Time:</strong> <span id="final-time"></span></p>
             <p><strong>Best Time:</strong> <span id="final-best-time"></span></p>
           </div>
           <div class="modal-footer border-0 justify-content-center">
