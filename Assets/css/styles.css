@@ -1,0 +1,157 @@
+:root {
+  --primary-color: #1a73e8;
+  --light-primary: #e8f0fe;
+  --background-color: #f0f2f5;
+  --card-front-gradient: linear-gradient(135deg, #42a5f5, #1e88e5);
+  --matched-bg: #c8e6c9;
+  --matched-border: #4caf50;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.game-container {
+  width: 100%;
+  max-width: 720px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 2rem;
+}
+
+.game-title {
+  font-family: "Pacifico", cursive;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.settings-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-group .btn {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  background: var(--light-primary);
+  padding: 0.75rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.stats-container span {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* The game board grid */
+.game-board {
+  display: grid;
+  gap: 10px;
+  perspective: 1000px;
+  /* For the 3D flip effect */
+}
+
+/* Grid layouts for different difficulties */
+.easy-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.medium-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.hard-grid {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/* Individual card styling */
+.card {
+  background-color: transparent;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border: none;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  position: relative;
+}
+
+.card.flipped,
+.card.matched {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: clamp(1.5rem, 8vw, 3rem);
+}
+
+.card-front {
+  background: var(--card-front-gradient);
+  color: white;
+}
+
+.card-back {
+  background-color: #ffffff;
+  border: 2px solid #e0e0e0;
+  transform: rotateY(180deg);
+  color: #333;
+}
+
+.card.matched .card-back {
+  background-color: var(--matched-bg);
+  border-color: var(--matched-border);
+}
+
+.restart-button-container {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .game-container {
+    padding: 1rem;
+  }
+
+  .settings-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hard-grid {
+    gap: 5px;
+  }
+}
