@@ -2,12 +2,13 @@
 
 An enhanced and feature-rich version of the classic card-matching memory game. Built with vanilla JavaScript, HTML, and Bootstrap, this project demonstrates a wide range of modern front-end features, from dynamic theming and local storage to accessibility and audio integration.
 
-**[https://sanjyann.github.io/MemoryMatchGame/]**
+**Link : [https://sanjyann.github.io/MemoryMatchGame/]**
 
 ![Screenshot of Memory Match Game]
 <img width="1897" height="926" alt="image" src="https://github.com/user-attachments/assets/0410a658-205c-42ae-8ad8-26432d0a5e04" />
 
-*A preview of the game in dark mode.*
+
+*Dark mode.*
 <img width="1903" height="927" alt="image" src="https://github.com/user-attachments/assets/41988664-80cc-4b1f-8eb5-de3a18e15b37" />
 
 ---
