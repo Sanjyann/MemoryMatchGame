@@ -4,7 +4,7 @@ An enhanced and feature-rich version of the classic card-matching memory game. B
 
 **Link : [https://sanjyann.github.io/MemoryMatchGame/]**
 
-![Screenshot of Memory Match Game]
+*Screenshot of Memory Match Game*
 <img width="1897" height="926" alt="image" src="https://github.com/user-attachments/assets/0410a658-205c-42ae-8ad8-26432d0a5e04" />
 
 
